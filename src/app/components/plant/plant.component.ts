@@ -15,7 +15,6 @@ export class PlantComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlantsList().then(plants => {
-      console.log({ plants });
       this.plants = plants;
       this.setTotalizeByType();
     });
