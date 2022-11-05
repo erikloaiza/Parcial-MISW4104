@@ -14,17 +14,9 @@ export class PlantComponent implements OnInit {
   constructor(private plantsService: PlantService) {}
 
   ngOnInit(): void {
-    this.getPlantsList().then(plants => {
+    this.plantsService.getPlants().subscribe(plants => {
       this.plants = plants;
       this.setTotalizeByType();
-    });
-  }
-
-  getPlantsList() {
-    return new Promise<Plant.Request[]>(resolve => {
-      this.plantsService.getPlants().subscribe(response => {
-        resolve(response);
-      });
     });
   }
 

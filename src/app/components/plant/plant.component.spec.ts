@@ -46,7 +46,7 @@ describe('PlantComponent', () => {
   it('should have n plants', () => {
     expect(component.plants.length).toEqual(totalTestPlants);
   });
-  fit('should have a table with n + 1 rows', () => {
+  it('should have a table with n + 1 rows', () => {
     expect(debug.query(By.css('table'))).toBeTruthy();
     expect(debug.queryAll(By.css('table tr')).length).toEqual(
       totalTestPlants + 1
