@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlantService } from '../../services/plant.service';
+import { Plant } from '../../interfaces/plant';
 
 @Component({
   selector: 'app-plant',
@@ -6,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plant.component.css'],
 })
 export class PlantComponent implements OnInit {
-  constructor() {}
+  plants: Plant.Request[] = [];
+
+  constructor(private plantsService: PlantService) {}
 
   ngOnInit(): void {
-    console.error('onInit not implemented');
+    this.getPlantsList().then(plants => {
+      console.log({ plants });
+      this.plants = plants;
+    });
+  }
+
+  getPlantsList() {
+    return new Promise<Plant.Request[]>(resolve => {
+      this.plantsService.getPlants().subscribe(response => {
+        resolve(response);
+      });
+    });
   }
 }

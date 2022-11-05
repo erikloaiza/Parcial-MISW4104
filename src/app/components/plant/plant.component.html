@@ -1,1 +1,30 @@
-<p>plant works!</p>
+<main class="container">
+    <div class="col-6">
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Nombre común</th>
+            <th>Tipo</th>
+            <th>Clima</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let plant of plants">
+                <td>
+                  <dd>{{plant.id}}</dd>
+                </td>
+                <td>
+                  <dd>{{plant.nombre_comun}}</dd>
+                </td>
+                <td>
+                  <dd>{{plant.tipo}}</dd>
+                </td>
+                <td>
+                  <dd>{{plant.clima}}</dd>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+</main>
