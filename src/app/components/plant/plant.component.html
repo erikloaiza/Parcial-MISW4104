@@ -26,5 +26,8 @@
             </tr>
         </tbody>
       </table>
+      <ul *ngIf="totalByType.length" class="list-unstyled">
+        <li *ngFor="let total of totalByType">Total plantas de {{total[0].toLocaleLowerCase()}}: {{total[1]}}</li>
+      </ul>
     </div>
 </main>

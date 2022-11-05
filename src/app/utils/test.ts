@@ -19,7 +19,7 @@ export const getFakePlant = (): Plant.Request => ({
   id: faker.datatype.number(),
   nombre_comun: faker.name.fullName(),
   nombre_cientifico: faker.lorem.words(),
-  tipo: faker.lorem.word(),
+  tipo: faker.helpers.arrayElement(['Interior', 'Exterior']),
   altura_maxima: faker.datatype.number(),
   clima: faker.lorem.word(),
   sustrato_siembra: faker.lorem.text(),

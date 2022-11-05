@@ -9,6 +9,7 @@ import { Plant } from '../../interfaces/plant';
 })
 export class PlantComponent implements OnInit {
   plants: Plant.Request[] = [];
+  totalByType: [Plant.Request['tipo'], number][] = [];
 
   constructor(private plantsService: PlantService) {}
 
@@ -16,6 +17,7 @@ export class PlantComponent implements OnInit {
     this.getPlantsList().then(plants => {
       console.log({ plants });
       this.plants = plants;
+      this.setTotalizeByType();
     });
   }
 
@@ -25,5 +27,14 @@ export class PlantComponent implements OnInit {
         resolve(response);
       });
     });
+  }
+
+  setTotalizeByType() {
+    const accumulator = {} as Record<Plant.Request['tipo'], number>;
+    for (const { tipo } of this.plants) {
+      if (accumulator[tipo] == undefined) accumulator[tipo] = 0;
+      accumulator[tipo]++;
+    }
+    this.totalByType = Object.entries(accumulator) as typeof this.totalByType;
   }
 }
